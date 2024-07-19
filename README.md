@@ -15,11 +15,11 @@ Follow the official System Elecronics guide to build the Astrial Yocto image:
 https://github.com/System-Electronics/meta-sysele-nxp-5.15.71/blob/main/ASTRIAL-YOCTO-INSTALL.md
 
 ### Flash SD Card
-Flash the SD Card using the following command (replace \<sdx\> with the name of your SD Card):
+Flash the SD Card using the following command (replace \<sdx\> with the name of your SD Card):  
 ```
 cd <astrial_build_directory>/build/tmp/deploy/images/astrial-imx8mp/
 zstdcat system-astrial-image-astrial-imx8mp.wic.zst | sudo dd of=/dev/<sdx> bs=1M conv=fsync
 ```
 
 ## Use a custom DTB
-In some tutorials, we use a custom Device Tree (DTS) to enable specific functionalities. To use a custom DTS, replace the default Device Tree Blob (DTB) with the one provided in the `resources` directory of that tutorial: insert the SD card in your PC and replace the .dtb file you find in the `boot` partition with the new one.
+In some tutorials, we use a custom Device Tree (DTS) to enable specific functionalities. To use a custom DTS, replace the default Device Tree Blob (DTB) that you find in the `/run/media/boot-mmcblk2p1` directory, with the one provided in the `resources` directory of that tutorial. Make sure that the file name is `imx8mp-astrial.dtb`. Finally, reboot the Astrial.
