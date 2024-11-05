@@ -46,7 +46,14 @@ Now let's move on the other Astrial so that we can send messages to be seen on t
 * Use the default Device Tree Blob (DTB): to enable SPI communication, you need to upload the default Device Tree to your Astrial board if you modified it previously. You can find the DTB in the resources folder of the GitHub repository for this tutorial. If you are not sure how to do this, please refer to our GitHub guide.
 * Copy the custom MCP2515 library: we provide a custom version of the Adafruit's MCP2515 library in the main folder of this tutorial.
 Copy the `can_lib` folder to the Astrial, together with the example scripts.
-* Use the Python script to send data: run the python script named can_send.py that will send the message 'hello' every second on the bus.
+```sh
+scp -r can_lib root@<ip_address>:/home/root
+```
+* Copy the Python script to send data: copy the Python script in this directory named can_send.py on your Astrial.
+```sh
+scp can_send.py root@<ip_address>:/home/root
+```
+* Run the Python script to send data: run the copied python script that will send the message 'hello' every second on the can-bus.
 ```sh
 python3 can_send.py
 ```
@@ -56,8 +63,12 @@ You will now see the 'hello' messages appearing on the FD3 Click Astrial's termi
 #### From the FD3 Click Astrial to the CAN hat Astrial
 Let's now do the opposite, sending message from the FD3 Click Astrial to the CAN hat Astrial.
 
-On the CAN hat Astrial Astrial:
-* Create and run the Python script to receive data: create a Python script that implements the code provided in the Code section of this article named can_listen.py that will display on your terminal all the CAN messages it receives on the bus.
+On the CAN hat Astrial:
+* Copy the python script to receive data: copy the Python script in this directory named can_listen.py on your Astrial.
+```sh
+scp can_listen.py root@<ip_address>:/home/root
+```
+* Run the Python script to receive data: Run the python script on your Astrial, it will display on your terminal all the CAN messages it receives on the bus.
 ```sh
 python3 can_listen.py
 ```
