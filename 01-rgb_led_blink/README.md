@@ -13,7 +13,11 @@ Connect the led, resistors and jumpers as shown in the following schematic.
 
 ![Schematic](images/schematic.png)
 
-The Red, Green, and Blue lines of the led are connected to GPIO 25, GPIO 24, and GPIO 23 respectively, and Ground is connected to pin 20.
+Connection Details:
+- The Red, Green, and Blue pins of the LED are connected to GPIO 25, GPIO 24, and GPIO 23 on the Raspberry Pi 40-pin connector.
+- The Ground (GND) of the LED is connected to Pin 20 on the Raspberry Pi connector.
+
+Refer to the GPIO diagram for further clarification:
 
 ![GPIO Diagram](images/GPIO.png)
 
@@ -31,7 +35,39 @@ Run the RGB Led Blink script:
 python3 rgb_led_blink.py
 ```
 
-### GPIO Pins
+
+## Pin Mapping
+To control the GPIO pins from the Raspberry Pi 40-pin connector, follow these steps to trace the mapping:
+
+### 1. Locate the Raspberry Pi GPIO Pin Number
+Use the Raspberry Pi pinout diagram above to identify the GPIO pin number associated with your chosen physical pin on the connector. For example:
+
+- Pin 16 on the Raspberry Pi connector corresponds to GPIO 23.
+- Pin 18 corresponds to GPIO 24.
+- Pin 22 corresponds to GPIO 25.
+
+### 2. Understand the Mapping
+Each GPIO on the CM4 carrier corresponds to a specific GPIO chip (gpiochipX) and line number. This mapping is determined by the DTS configuration.
+Use the following table to find the associated GPIO chip and line for your desired GPIO:
+
+| GPIO	    | gpiochip	| line
+|-----------|-----------|-----
+| GPIO23	| gpiochip1	| 1
+| GPIO24	| gpiochip1	| 2
+| GPIO25	| gpiochip1	| 3
+
+### 3. Determine the Path to the GPIO Pin
+Using the table above, trace the GPIO to its /dev/gpiochipX representation:
+
+- GPIO 23 → /dev/gpiochip1 line 1
+- GPIO 24 → /dev/gpiochip1 line 2
+- GPIO 25 → /dev/gpiochip1 line 3
+
+### 4. Drive the GPIO Pin
+Once you have the gpiochip and line, you can control the pin using Python's gpiod library, as shown in the example script.
+
+
+## GPIO Pins
 The following table shows all the possible combinations of gpiochip and line that you can use in your code, and the corresponding GPIO, using the default DTS. 
 
 |  GPIO  | gpiochip  | line |   | PULL-UP CM4-IO |
