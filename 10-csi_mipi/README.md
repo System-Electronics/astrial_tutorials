@@ -16,14 +16,20 @@ Connect you Raspberry Pi Camera to the CM4 Carrier board using either CAM0 or CA
 ![RPI Camera connected to CM4 using adapter cable](images/RPi-Camera-CM4.jpg)
 
 ### Copy the example script
-If you have previously modified the detection script on you Astrial, copy the `detection.sh` script to the Astrial, under the `/home/root/apps/detection` folder. This script uses the raspberry camera to detect objects and display the video stream on the screen.
+For this tutorial we are going to use a slightly modified version of the detection script that you will find on your newly flashed Astrial. The onlu difference is that we are going to use the `synchailonet` GStreamer component instead of the `hailonet` one.
+
+We do this because the `hailonet` component is not able to handle the video stream coming from the Raspberry Pi Camera or any other CSI camera.
+
+To use the modified version copy the `detection.sh` script to the Astrial, under the `/home/root/apps/detection` folder.
 
 ```sh
 scp detection.sh root@<astrial_ip>:/home/root/apps/detection
 ```
 
+You can elso edit yourself the detection script (`/home/root/apps/detection/detection.sh`) on your Astrial by changing the `hailonet` component with the `synchailonet` one at line 68.
+
 ### Software setup
-After booting your Astrial go to /opt/imx8-isp/bin and launch the ISP media server in dual mode so that you can choose between CAM0 and CAM1 MIPI port (you still won't be able to use both of them simultaneously), while if you launch it in single mode only CAM0 will be usable.
+After booting your Astrial go to `/opt/imx8-isp/bin` and launch the ISP media server in dual mode so that you can choose between CAM0 and CAM1 MIPI port (you still won't be able to use both of them simultaneously), while if you launch it in single mode only CAM0 will be usable.
 ```sh
 cd /opt/imx8-isp/bin
 ./run.sh -lm -c dual_imx219_1080p60 &
