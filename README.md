@@ -21,5 +21,26 @@ cd <astrial_build_directory>/build/tmp/deploy/images/astrial-imx8mp/
 zstdcat system-astrial-image-astrial-imx8mp.wic.zst | sudo dd of=/dev/<sdx> bs=1M conv=fsync
 ```
 
-## Use a custom DTB
-In some tutorials, we use a custom Device Tree (DTS) to enable specific functionalities. To use a custom DTS, replace the default Device Tree Blob (DTB) that you find in the `/run/media/boot-mmcblk2p1` directory, with the one provided in the `resources` directory of that tutorial. Make sure that the file name is `imx8mp-astrial.dtb`. Finally, reboot the Astrial.
+## Select a dtb
+To select a Device Tree Blob (DTB) for the Astrial, follow these steps:
+1. Connect your PC to the Astrial using a TTY-USB cable.
+2. Connect to the Astrial using a serial terminal emulator with a baudrate of 115200. We use `tio` in this example:
+```sh
+sudo tio /dev/ttyUSB0 -b 115200
+```
+3. Power on the Astrial.
+4. Press any key to stop the boot process during the first seconds of the boot process. If you couldn't stop the boot process, reboot the Astrial and try again.
+5. Run the following commands to select the DTB:
+```sh
+setenv fdtfile 'your_dtb'.dtb
+saveenv
+```
+6. To make sure the DTB is correctly set, run the following command:
+```sh
+printenv fdtfile
+```
+7. Run the following command to resume the boot process of your Astrial:
+```sh
+boot
+```
+The selected DTB will be used until you change it again.

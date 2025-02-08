@@ -26,7 +26,7 @@ Refer to the GPIO diagram for further clarification:
 ### Install Python packages
 Install the required python packages:
 ```
-pip3 install -r requirements.txt
+pip3 install gpiod==2.2.0
 ```
 
 ### Run the Python script
@@ -102,4 +102,4 @@ The following table shows all the possible combinations of gpiochip and line tha
 
 \* only works with modified DTS
 
-If you want to enable all available GPIOs, use the custom DTB provided in the `resources` directory (imx8mp-astrial.dtb)
+If you want to enable all available GPIOs, select the 'imx8mp-astrial-disable-all.dtb' device tree file in the U-Boot menu as shown [here](../README.md#select-a-dtb).

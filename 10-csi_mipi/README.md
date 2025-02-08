@@ -15,6 +15,8 @@ First you need to fit 2 jumpers on J6 as shown in the image below to enable CAM0
 Connect you Raspberry Pi Camera to the CM4 Carrier board using either CAM0 or CAM1 port using RPI CAMERA CABLE STANDARD-MINI-300MM.
 ![RPI Camera connected to CM4 using adapter cable](images/RPi-Camera-CM4.jpg)
 
+Lastly, connect an HDMI monitor: for this tutorial, to see the video stream, you need to connect a display to the CM4's HDMI port.
+
 ### Copy the example script
 For this tutorial we are going to use a slightly modified version of the detection script that you will find on your newly flashed Astrial. The onlu difference is that we are going to use the `synchailonet` GStreamer component instead of the `hailonet` one.
 

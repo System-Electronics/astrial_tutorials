@@ -28,7 +28,7 @@ The Red, Green, and Blue lines of the led are connected to GPIO 25, GPIO 24, and
 ### Install Python packages
 Install the required python packages:
 ```
-pip3 install -r requirements.txt
+pip3 install gpiod==2.2.0
 ```
 
 ### Run the Python script
@@ -37,7 +37,37 @@ Run the RGB Led Blink script:
 python3 rgb_led_blink.py
 ```
 
-### GPIO Pins
+## Pin Mapping
+To control the GPIO pins from the Raspberry Pi 40-pin connector, follow these steps to trace the mapping:
+
+### 1. Locate the Raspberry Pi GPIO Pin Number
+Use the Raspberry Pi pinout diagram above to identify the GPIO pin number associated with your chosen physical pin on the connector. For example:
+
+- Pin 16 on the Raspberry Pi connector corresponds to GPIO 23.
+- Pin 18 corresponds to GPIO 24.
+- Pin 22 corresponds to GPIO 25.
+
+### 2. Understand the Mapping
+Each GPIO on the CM4 carrier corresponds to a specific GPIO chip (gpiochipX) and line number. This mapping is determined by the DTS configuration.
+Use the following table to find the associated GPIO chip and line for your desired GPIO:
+
+| GPIO	    | gpiochip	| line
+|-----------|-----------|-----
+| GPIO23	| gpiochip1	| 1
+| GPIO24	| gpiochip1	| 2
+| GPIO25	| gpiochip1	| 3
+
+### 3. Determine the Path to the GPIO Pin
+Using the table above, trace the GPIO to its /dev/gpiochipX representation:
+
+- GPIO 23 → /dev/gpiochip1 line 1
+- GPIO 24 → /dev/gpiochip1 line 2
+- GPIO 25 → /dev/gpiochip1 line 3
+
+### 4. Drive the GPIO Pin
+Once you have the gpiochip and line, you can control the pin using Python's gpiod library, as shown in the example script.
+
+## GPIO Pins
 The following table shows all the possible combinations of gpiochip and line that you can use in your code, and the corresponding GPIO, using the default DTS. 
 
 |  GPIO  | gpiochip  | line |   | PULL-UP CM4-IO-Base-A/B | PULL-UP CM4-POE |
@@ -72,4 +102,4 @@ The following table shows all the possible combinations of gpiochip and line tha
 
 \* only works with modified DTS
 
-If you want to enable all available GPIOs, use the custom DTB provided in the `resources` directory (imx8mp-astrial.dtb)
+If you want to enable all available GPIOs, select the 'imx8mp-astrial-disable-all.dtb' device tree file in the U-Boot menu as shown [here](../README.md#select-a-dtb).

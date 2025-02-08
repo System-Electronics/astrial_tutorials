@@ -19,6 +19,8 @@
 
 ![Photo](images/schematic.png)
 
+### Enable UART3
+In order to use the COM1 RS485 interface, you need to enable the UART3 interface. To do this, select the 'imx8mp-astrial-uart3.dtb' device tree file in the U-Boot menu as shown [here](../README.md#select-a-dtb).
 
 ### Copy the scripts
 Copy the R421B16 folder to the Astrial:

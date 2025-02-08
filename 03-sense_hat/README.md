@@ -10,11 +10,6 @@ Connect the Sense Hat to the CM4's GPIO header, and the Astrial's 5V and GND to 
 
 ![Schematic](images/schematic.png)
 
-### Use custom DTB
-To enable the Sense Hat functionalities, you will need to use the custom DTB provided in the `resources` folder.
-For instructions on using a custom DTB on Astrial, see [Use a custom DTB](./../README.md#use-a-custom-dtb).
-See the [Appendix](#appendix) section for a complete overview of the changes made to the DTS.
-
 ### RTIMULib
 The Sense HAT includes an IMU (Inertial Measurement Unit) sensor suite, for which you need the RTIMULib library.
 
@@ -65,38 +60,3 @@ OSError: Humidity Init Failed
 This is because the default I2C bus used by the Sense Hat is 1, but the CM4 carrier uses bus 4.
 To fix this, you need to modify the RTIMULib configuration file that is created automatically the first time you run the script.
 Locate the `RTIMULib.ini` file inside `/home/root/.config/sense_hat`, and modify the I2CBus setting to `I2CBus=4`.
-
-## Appendix
-### Changes to the DTS
-To enable the Sense Hat on Astrial, we made the following changes to the DTS:
-```dts
-&i2c5 {
-    clock-frequency = <100000>;
-    pinctrl-names = "default";
-    pinctrl-0 = <&pinctrl_i2c5>;
-    status = "okay";
-};
-
-&i2c6 {
-    clock-frequency = <100000>;
-    pinctrl-names = "default";
-    pinctrl-0 = <&pinctrl_i2c6>;
-    status = "okay";
-
-    ...
-};
-...
-pinctrl_i2c5: i2c5grp {
-    fsl,pins = <
-        MX8MP_IOMUXC_SAI5_RXD0__I2C5_SCL	0x400001c2
-        MX8MP_IOMUXC_SAI5_MCLK__I2C5_SDA	0x400001c2
-    >;
-};
-
-pinctrl_i2c6: i2c6grp {
-    fsl,pins = <
-        MX8MP_IOMUXC_SAI5_RXFS__I2C6_SCL	0x400001c2
-        MX8MP_IOMUXC_SAI5_RXC__I2C6_SDA	    0x400001c2
-    >;
-};
-```

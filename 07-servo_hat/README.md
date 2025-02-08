@@ -26,11 +26,6 @@ Install the required python packages:
 pip3 install PCA9685-driver==1.2.0
 ```
 
-### Use the custom DTB
-To use the HAT make sure I2C communication is enabled in you DTB.
-If you are not sure whether it is enabled or not use the custom DTB we provide in the `resources` directory (imx8mp-astrial.dtb).
-For instructions on using a custom DTB, see [Use a custom DTB](./../README.md#use-a-custom-dtb).
-
 ### Run the Python script
 Copy the python script of this tutorial, along with the PCA9685 library, to the Astrial. Then, run the example script:
 
@@ -40,4 +35,4 @@ python3 example.py
 
 You should see first the LED blinking smoothly for 4 times, then the continuous servos rotating back and forth at maximum speed and finally the positional servo motor rotating from 0° to 180° twice.
 
-![Final result](resources/animazione.gif)
+![Final result](images/animazione.gif)

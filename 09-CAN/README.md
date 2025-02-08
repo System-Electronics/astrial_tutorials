@@ -32,8 +32,7 @@ pip3 install spidev==3.6
 ### Software setup
 #### From the CAN hat Astrial to the FD3 Click Astrial
 To receive messages on Astrial's CAN controller follow these steps on the CAN hat Astrial:
-* Use the default Device Tree Blob (DTB): to enable the CAN, you need to upload the default Device Tree to your Astrial board if you modified it previously. This DTB enables Astrial's CAN. You can find the custom DTB in the `resources` folder.
-For instructions on using a custom DTB, see [Use a custom DTB](./../README.md#use-a-custom-dtb).
+* Enable the CAN interface: to enable the CAN, you need to select the 'imx8mp-astrial-flexcan2.dtb' device tree file in the U-Boot menu as shown [here](../README.md#select-a-dtb).
 * Set up CAN: launch this command to establish CAN link with the desired bitrate (we are using 125000 but you can choose other values)
 ```sh
 ip link set can0 up type can bitrate 125000

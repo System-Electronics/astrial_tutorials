@@ -18,16 +18,14 @@ Also, make sure to connect the power supply to the HAT, and turn it on with the 
 
 ![Photo](images/photo.jpg)
 
+### Enable all GPIOs
+To use the stepper motor HAT, you need to enable all GPIOs. To do this, select the 'imx8mp-astrial-disable-all.dtb' device tree file in the U-Boot menu as shown [here](../README.md#select-a-dtb).
 
 ### Install Python packages
 Install the required Python package:
 ```
 pip3 install gpiod==2.2.0
 ```
-
-### Use the custom DTB
-To enable all the GPIOs available, use the custom DTB provided in the `resources` directory (imx8mp-astrial.dtb).
-For instructions on using a custom DTB, see [Use a custom DTB](./../README.md#use-a-custom-dtb).
 
 ### Run the Python script
 Copy the python script of this tutorial, together with the DRV8825 library, to the Astrial:
