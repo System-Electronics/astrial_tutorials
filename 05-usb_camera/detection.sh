@@ -71,8 +71,8 @@ init_variables $@
 parse_args $@
 
 PIPELINE="gst-launch-1.0 \
-    v4l2src device=$input_source ! \
-    videoscale ! video/x-raw,width=$width,height=$height,framerate=30/1 ! \
+    v4l2src device=$input_source ! video/x-raw,width=$width,height=$height,framerate=10/1 ! \
+    videoconvert ! video/x-raw,format=YUY2 !
     queue leaky=downstream max-size-buffers=5 max-size-bytes=0 max-size-time=0 ! \
     hailonet hef-path=$hef_path ! \
     queue leaky=no max-size-buffers=30 max-size-bytes=0 max-size-time=0 ! \
