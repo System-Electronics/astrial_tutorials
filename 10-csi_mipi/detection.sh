@@ -6,10 +6,10 @@ CURRENT_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 function init_variables() {
     readonly RESOURCES_DIR="${CURRENT_DIR}/resources"
     readonly POSTPROCESS_DIR="/usr/lib/hailo-post-processes"
-    readonly DEFAULT_POSTPROCESS_SO="$POSTPROCESS_DIR/libyolo_post.so"
+    readonly DEFAULT_POSTPROCESS_SO="$POSTPROCESS_DIR/libyolo_hailortpp_post.so"
     readonly DEFAULT_NETWORK_NAME="yolov5"
     readonly DEFAULT_VIDEO_SOURCE="/dev/video0"
-    readonly DEFAULT_HEF_PATH="${RESOURCES_DIR}/${DEFAULT_NETWORK_NAME}m_yuv.hef"
+    readonly DEFAULT_HEF_PATH="${RESOURCES_DIR}/${DEFAULT_NETWORK_NAME}m_wo_spp_yuy2.hef"
     readonly DEFAULT_JSON_CONFIG_PATH="$RESOURCES_DIR/configs/yolov5.json"
 
     postprocess_so=$DEFAULT_POSTPROCESS_SO
@@ -63,11 +63,11 @@ init_variables $@
 parse_args $@
 
 PIPELINE="gst-launch-1.0 \
-    v4l2src device=$input_source ! video/x-raw,format=YUY2,width=1280,height=720 ! \
+    v4l2src device=$input_source ! video/x-raw,format=YUY2,width=1280,height=720,framerate=30/1 ! \
     queue leaky=downstream max-size-buffers=5 max-size-bytes=0 max-size-time=0 ! \
     synchailonet hef-path=$hef_path ! \
     queue leaky=no max-size-buffers=30 max-size-bytes=0 max-size-time=0 ! \
-    hailofilter function-name=$network_name config-path=$json_config_path so-path=$postprocess_so qos=false ! \
+    hailofilter config-path=$json_config_path so-path=$postprocess_so qos=false ! \
     queue leaky=no max-size-buffers=30 max-size-bytes=0 max-size-time=0 ! \
     hailooverlay ! \
     queue leaky=downstream max-size-buffers=5 max-size-bytes=0 max-size-time=0 ! \
