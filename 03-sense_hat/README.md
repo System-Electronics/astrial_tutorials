@@ -5,6 +5,8 @@
 * 1 x Sense Hat
 
 ## Setup
+<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+
 ### Hardware setup
 Connect the Sense Hat to the CM4's GPIO header, and the Astrial's 5V and GND to the 5V and GND pins of the USB header, as shown in the following schematic.
 

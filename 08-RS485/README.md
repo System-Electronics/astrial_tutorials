@@ -10,6 +10,8 @@
 ![Photo](images/photo.jpg)
 
 ## Setup
+<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+
 ### Hardware setup
 - Connect the Astrial to the Waveshare CM4-ETH-RS485-BASE-B using the 40-pin GPIO connector. 
 - Connect the R421B16 relay board to the COM1 RS485 interface of the CM4-ETH-RS485-BASE-B. You will need to connect B1- and A1+ of the CM4-ETH-RS485-BASE-B to B- and A+ of the R421B16.

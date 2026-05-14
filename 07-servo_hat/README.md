@@ -11,6 +11,8 @@
 * 4 x Continuous servo motor \[even though 1 is enough\]
 
 ## Setup
+<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+
 ### Hardware setup
 
 Let's start by preparing the necessary hardware components:

@@ -8,6 +8,8 @@
 * 4 x Wire jumpers
 
 ## Setup
+<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+
 ### Hardware setup
 Connect the led, resistors and jumpers as shown in the following schematic.
 
