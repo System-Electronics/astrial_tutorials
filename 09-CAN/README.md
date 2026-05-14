@@ -8,7 +8,7 @@
 * 10 x F/F Jumper wires
 
 ## Setup
-<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+${\textsf{\color{red}Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
 
 ### Hardware setup
 To use Astrial's integrated CAN controller you first need to **set your CAN FD 3 Click to communicate using 3.3V instead of 5V** (**if you don't do this you might damage permanently your Astrial**). To do this you will need to desolder a 0Ω resistor from the CAN FD 3 Click VIO SEL 5V and solder it on 3V3.

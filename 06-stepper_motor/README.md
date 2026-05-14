@@ -8,7 +8,7 @@
 \* The tutorial uses two stepper motors, but you can use only one if you want.
 
 ## Setup
-<font color="red">**Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**</font>
+${\textsf{\color{red}Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
 
 ### Hardware setup
 Connect the Stepper Motor HAT to the CM4's GPIO header, and the stepper motors to the HAT, like in the following schematic.
