@@ -7,7 +7,7 @@
 * 2 x Jumper wires (F/F)
 
 ## Setup
-$\color{red}{\text{Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
+$\color{red}{\textbf{Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
 ```diff
 - Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.
 ```
