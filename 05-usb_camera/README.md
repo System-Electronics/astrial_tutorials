@@ -5,7 +5,8 @@
 * 1 x USB Camera Innodisk EV2U-SGR1
 
 ## Setup
-${\textsf{\color{red}Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
+_**DISCLAIMER: There is a wrong information about the 5V to power the Hailo, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**_
+![Powering the Hailo](../common/right_pin.png)
 
 ### Hardware setup
 Connect the USB camera to the CM4's USB port.

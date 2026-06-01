@@ -11,7 +11,8 @@ The goal of this tutorial is the reproduce the results of Tutorial 01 on three d
 * 4 x Wire jumpers
 
 ## Setup
-${\textsf{\color{red}Be careful, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.}}$
+_**DISCLAIMER: There is a wrong information about the 5V to power the Hailo, the vbus current is limited. To power the Hailo connect its 5V to the pin 2 on the 40-pin header of the board.**_
+![Powering the Hailo](../common/right_pin.png)
 
 The hardware and software setup is the same for all the boards, since they share the same pinout.
 
